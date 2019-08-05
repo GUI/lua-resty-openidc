@@ -459,7 +459,7 @@ function openidc.call_token_endpoint(opts, endpoint, body, auth, endpoint_name, 
           aud = endpoint,
           jti = ngx.var.request_id,
           exp = now + (opts.client_jwt_assertion_expires_in and opts.client_jwt_assertion_expires_in or 60),
-          iat = now
+          iat = now + (opts.client_jwt_iat_adjustment or 0),
         }
       }
       if auth == "private_key_jwt" then
